@@ -104,8 +104,14 @@
               "target": "_self",
               "child": [
                 {
-                  "title": "Where",
-                  "href": "sqli/mybatis_where",
+                  "title": "Where int",
+                  "href": "sqli/mybatis_where_int",
+                  "icon": "fa fa-eyedropper",
+                  "target": "_self"
+                },
+                {
+                  "title": "Where string",
+                  "href": "sqli/mybatis_where_string",
                   "icon": "fa fa-eyedropper",
                   "target": "_self"
                 },

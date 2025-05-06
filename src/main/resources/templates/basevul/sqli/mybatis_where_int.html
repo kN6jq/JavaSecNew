@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{commons/commons::head}"></div>
+
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-row layui-col-space10">
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                        <legend>MyBatis Where 条件注入（int id）</legend>
+                    </fieldset>
+
+                    <!--漏洞简介 -->
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-eyedropper icon"></i>漏洞描述</div>
+                            <div class="layui-card-body layui-text layadmin-text">
+                                <p>在使用 MyBatis 时，如果 where 条件拼接不当，容易导致 SQL 注入漏洞。</p>
+                                <p>特别是一些开发者为了绕过预编译限制，使用 ${} 拼接 SQL，使得攻击者可以构造恶意输入执行非法 SQL。</p>
+                                <p>POC 示例：输入 <code>1 or 1=1</code> 可能会绕过查询限制获取所有数据。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 漏洞测试表单 -->
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-hand-o-down icon"></i>漏洞测试</div>
+                            <div class="layui-card-body layui-text layadmin-text">
+                                <form class="layui-form" th:action="@{/home/sqli/mybatis/where_int}" method="get">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">ID:</label>
+                                        <div class="layui-input-block">
+                                            <input type="number" name="id" value="" lay-verify="required"
+                                                   lay-reqtext="ID 必须为整数" class="layui-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 执行结果展示 -->
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-eyedropper icon"></i>测试结果</div>
+                            <div class="layui-card-body layui-text layadmin-text">
+                                <table border="1" width="300" th:unless="${#lists.isEmpty(userInfo)}">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>用户名</th>
+                                        <th>密码</th>
+                                    </tr>
+                                    <tr th:each="user:${userInfo}">
+                                        <td th:text="${user.id}" align="center"></td>
+                                        <td th:text="${user.username}" align="center"></td>
+                                        <td th:text="${user.password}" align="center"></td>
+                                    </tr>
+                                </table>
+                                <pre th:if="${results}" th:text="${results}" style="color: red;font-size: 15px;"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 引入公共脚本 -->
+<div th:replace="~{commons/commons::script}"></div>
+</body>
+</html>

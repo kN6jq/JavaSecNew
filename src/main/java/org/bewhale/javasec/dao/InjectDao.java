@@ -11,8 +11,10 @@ import java.util.ArrayList;
 public interface InjectDao {
 
     @Select("select * from users where username = '${name}'")
-    ArrayList<Admin> where(@Param("name") String name);
+    ArrayList<Admin> where_string(@Param("name") String name);
 
+    @Select("select * from users where id = ${id}")
+    ArrayList<Admin> where_int(@Param("id") String name);
 
     @Select("select * from users order by ${field}")
     ArrayList<Admin> orderBy(@Param("field") String field);

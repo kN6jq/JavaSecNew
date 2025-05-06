@@ -16,16 +16,28 @@ public class MyBatis {
     @SuppressWarnings("all")
     InjectService injectService;
 
-    @RequestMapping("/where")
-    public String where(String name, Model model) {
+    @RequestMapping("/where_int")
+    public String where_int(String id, Model model) {
         try {
-            ArrayList<Admin> adminList = injectService.where(name);
+            ArrayList<Admin> adminList = injectService.where_int(id);
             model.addAttribute("userInfo", adminList);
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("results", e.toString());
         }
-        return "basevul/sqli/mybatis_where";
+        return "basevul/sqli/mybatis_where_int";
+    }
+
+    @RequestMapping("/where_string")
+    public String where_string(String name, Model model) {
+        try {
+            ArrayList<Admin> adminList = injectService.where_string(name);
+            model.addAttribute("userInfo", adminList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("results", e.toString());
+        }
+        return "basevul/sqli/mybatis_where_string";
     }
 
     @RequestMapping("/orderby")

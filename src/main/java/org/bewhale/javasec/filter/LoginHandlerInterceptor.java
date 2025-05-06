@@ -13,14 +13,15 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         String username = (String) session.getAttribute("username");
         String path = request.getRequestURI();
 
-        if (username == null) {
-//            request.setAttribute("msg", "请先登录！！！");
-            response.sendRedirect("/admin/login?path=" + path);
-//            request.getRequestDispatcher("/index").forward(request, response);
-            return false;
-        } else {
-            return true;
-        }
+//        if (username == null) {
+////            request.setAttribute("msg", "请先登录！！！");
+//            response.sendRedirect("/admin/login?path=" + path);
+////            request.getRequestDispatcher("/index").forward(request, response);
+//            return false;
+//        } else {
+//            return true;
+//        }
+        return true;
 
     }
 }

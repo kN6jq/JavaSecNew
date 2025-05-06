@@ -18,8 +18,12 @@ public class InjectServiceImpl implements InjectService {
 
 
     @Override
-    public ArrayList<Admin> where(String name) {
-        return injectDao.where(name);
+    public ArrayList<Admin> where_string(String name) {
+        return injectDao.where_string(name);
+    }
+    @Override
+    public ArrayList<Admin> where_int(String id) {
+        return injectDao.where_int(id);
     }
 
     @Override
