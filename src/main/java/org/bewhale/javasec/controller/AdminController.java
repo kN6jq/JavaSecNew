@@ -51,11 +51,11 @@ public class AdminController {
         if (request.getMethod().equals("GET"))
             return "login";
 
-        if (!CaptchaUtil.ver(captcha, request)) {
-            CaptchaUtil.clear(request);
-            model.addAttribute("msg", "验证码不正确");
-            return "login";
-        }
+//        if (!CaptchaUtil.ver(captcha, request)) {
+//            CaptchaUtil.clear(request);
+//            model.addAttribute("msg", "验证码不正确");
+//            return "login";
+//        }
         Admin admin = adminService.login(username, password);
         if (admin != null) {
             session.setAttribute("username", username);

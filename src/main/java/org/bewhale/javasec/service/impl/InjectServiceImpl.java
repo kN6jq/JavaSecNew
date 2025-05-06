@@ -16,6 +16,12 @@ public class InjectServiceImpl implements InjectService {
         this.injectDao = injectDao;
     }
 
+
+    @Override
+    public ArrayList<Admin> where(String name) {
+        return injectDao.where(name);
+    }
+
     @Override
     public ArrayList<Admin> orderBy(String username) {
         return injectDao.orderBy(username);

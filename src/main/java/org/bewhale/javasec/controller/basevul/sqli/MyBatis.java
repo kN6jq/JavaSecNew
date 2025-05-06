@@ -16,6 +16,18 @@ public class MyBatis {
     @SuppressWarnings("all")
     InjectService injectService;
 
+    @RequestMapping("/where")
+    public String where(String name, Model model) {
+        try {
+            ArrayList<Admin> adminList = injectService.where(name);
+            model.addAttribute("userInfo", adminList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("results", e.toString());
+        }
+        return "basevul/sqli/mybatis_where";
+    }
+
     @RequestMapping("/orderby")
     public String orderBy(String field, Model model) {
         ArrayList<Admin> adminList;

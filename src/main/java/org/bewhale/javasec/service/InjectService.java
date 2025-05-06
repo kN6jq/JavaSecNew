@@ -5,6 +5,9 @@ import org.bewhale.javasec.model.Admin;
 import java.util.ArrayList;
 
 public interface InjectService {
+
+    ArrayList<Admin> where(String name);
+
     ArrayList<Admin> orderBy(String field);
 
     Admin likeSearch(String username);

@@ -37,6 +37,7 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("sqli/jdbc_error_based").setViewName("basevul/sqli/jdbc_error_based");
         registry.addViewController("sqli/jdbc_blind_time_based").setViewName("basevul/sqli/jdbc_blind_time_based");
         registry.addViewController("sqli/mybatis_orderby").setViewName("basevul/sqli/mybatis_orderby");
+        registry.addViewController("sqli/mybatis_where").setViewName("basevul/sqli/mybatis_where");
         registry.addViewController("sqli/mybatis_like").setViewName("basevul/sqli/mybatis_like");
         registry.addViewController("sqli/mybatis_in").setViewName("basevul/sqli/mybatis_in");
         registry.addViewController("ssrf").setViewName("basevul/ssrf");

@@ -10,6 +10,10 @@ import java.util.ArrayList;
 @Mapper
 public interface InjectDao {
 
+    @Select("select * from users where username = '${name}'")
+    ArrayList<Admin> where(@Param("name") String name);
+
+
     @Select("select * from users order by ${field}")
     ArrayList<Admin> orderBy(@Param("field") String field);
 
